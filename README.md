@@ -1,7 +1,3 @@
-# VPC - FIAP Hack
-
-Esta pasta contém a infraestrutura de rede para o projeto FIAP Hack, criando uma VPC escalável e preparada para Kubernetes.
-
 ## Arquitetura
 
 A VPC foi projetada seguindo as melhores práticas da AWS para ambientes Kubernetes:
@@ -67,17 +63,3 @@ Após o deploy, você terá acesso aos seguintes outputs:
 - `private_subnet_ids`: IDs das subnets privadas
 - `cluster_security_group_id`: ID do security group para EKS
 - `node_security_group_id`: ID do security group para nodes EKS
-
-## Custos
-
-- VPC: Gratuita
-- NAT Gateways: ~$45/mês por AZ
-- EIPs: ~$3.65/mês por EIP
-- Data Transfer: Variável
-
-## Próximos Passos
-
-Esta VPC será utilizada pelos seguintes componentes:
-- Cluster EKS para o serviço principal
-- RDS PostgreSQL
-- RabbitMQ no Kubernetes 
