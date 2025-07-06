@@ -1,7 +1,3 @@
-## Arquitetura
-
-A VPC foi projetada seguindo as melhores práticas da AWS para ambientes Kubernetes:
-
 ### Componentes Criados
 
 - **VPC**: CIDR 10.0.0.0/16
