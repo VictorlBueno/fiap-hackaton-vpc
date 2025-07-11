@@ -133,10 +133,10 @@ jobs:
           echo "VPC ID: $(cd terraform && terraform output -raw vpc_id)"
           echo ""
           echo "Subnets Públicas:"
-          cd terraform && terraform output -raw public_subnet_ids
+          cd terraform && terraform output -json public_subnet_ids | jq -r '.[]'
           echo ""
           echo "Subnets Privadas:"
-          cd terraform && terraform output -raw private_subnet_ids
+          cd terraform && terraform output -json private_subnet_ids | jq -r '.[]'
           echo ""
           echo "Security Groups:"
           echo "Cluster SG: $(cd terraform && terraform output -raw cluster_security_group_id)"
@@ -163,8 +163,8 @@ jobs:
         run: |
           echo "✅ Deploy da VPC concluído com sucesso!"
           echo "🌐 VPC ID: $(cd terraform && terraform output -raw vpc_id)"
-          echo "🔗 Subnets públicas: $(cd terraform && terraform output -raw public_subnet_ids | tr '\n' ' ')"
-          echo "🔒 Subnets privadas: $(cd terraform && terraform output -raw private_subnet_ids | tr '\n' ' ')"
+          echo "🔗 Subnets públicas: $(cd terraform && terraform output -json public_subnet_ids | jq -r '.[]' | tr '\n' ' ')"
+          echo "🔒 Subnets privadas: $(cd terraform && terraform output -json private_subnet_ids | jq -r '.[]' | tr '\n' ' ')"
 
       - name: Notificar falha
         if: needs.deploy.result == 'failure'
