@@ -193,3 +193,8 @@ output "node_security_group_id" {
   description = "ID do security group dos nodes EKS"
   value       = aws_security_group.eks_nodes.id
 } 
+
+output "vpc_cidr" {
+  description = "CIDR block da VPC"
+  value       = aws_vpc.main.cidr_block
+} 
